@@ -1,10 +1,7 @@
-import { cn } from "@/lib/utils";
-import { Slot } from "@radix-ui/react-slot";
-import { cva, VariantProps } from "class-variance-authority";
+import {cn} from "@/lib/utils";
+import {Slot} from "@radix-ui/react-slot";
+import {cva, VariantProps} from "class-variance-authority";
 import React from "react";
-
-interface RainbowButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const rainbowButtonVariants = cva(
   cn(
@@ -44,12 +41,12 @@ interface RainbowButtonProps
 }
 
 const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({className, variant, size, asChild = false, ...props}, ref) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         data-slot="button"
-        className={cn(rainbowButtonVariants({ variant, size, className }))}
+        className={cn(rainbowButtonVariants({variant, size, className}))}
         ref={ref}
         {...props}
       />
@@ -59,4 +56,4 @@ const RainbowButton = React.forwardRef<HTMLButtonElement, RainbowButtonProps>(
 
 RainbowButton.displayName = "RainbowButton";
 
-export { RainbowButton, rainbowButtonVariants, type RainbowButtonProps };
+export {RainbowButton, rainbowButtonVariants, type RainbowButtonProps};
