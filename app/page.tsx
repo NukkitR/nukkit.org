@@ -166,7 +166,7 @@ class MyPlugin(Plugin):
                   className="max-w-xl text-balance text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
                   The legacy Nukkit project has evolved.
                   <br/>
-                  Welcome to <b>Endstone</b>, the next generation of server software.
+                  Welcome to <b>Endstone</b>, the official spiritual successor to Nukkit.
                 </p>
 
                 <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
@@ -192,7 +192,7 @@ class MyPlugin(Plugin):
           </h2>
           <h3
             className="mx-auto mb-8 text-balance text-center text-lg font-medium tracking-tight text-foreground/80">
-            See how your Nukkit plugin translates into Endstone plugin in just a few lines.
+            See how your Nukkit plugin translates into Endstone plugin.
           </h3>
           <div className="relative flex flex-col">
             <CodeComparison
