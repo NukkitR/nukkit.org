@@ -1,4 +1,4 @@
-import {ChevronRight, Github, GithubIcon} from "lucide-react";
+import {ChevronRight} from "lucide-react";
 import {buttonVariants} from "@/components/ui/button";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
@@ -7,6 +7,13 @@ import {RainbowButton} from "@/components/magicui/rainbow-button";
 import {AnimatedGridPattern} from "@/components/magicui/animated-grid-pattern";
 import {AnimatedGradientText} from "@/components/magicui/animated-gradient-text";
 import {CodeComparison} from "@/components/magicui/code-comparison";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 
 export default function Home() {
   const beforeCode = `package my.plugin;
@@ -88,6 +95,31 @@ class MyPlugin(Plugin):
         self.logger.info("ServerCommandEvent is called!")
 
 `;
+
+  const faqs = [
+    {
+      question: "What is Nukkit?",
+      answer: "Nukkit was the original Java-based server software for Minecraft: Bedrock Edition, created by Vincent \"MagicDroidX\" Wu. It was designed to be fast, stable, and plugin-friendly. It's now considered a legacy project and is no longer actively maintained by its creator."
+    },
+    {
+      question: "Is Nukkit still maintained?",
+      answer: "No. The original Nukkit project has reached end-of-life, and all ongoing work by the creator has moved to its spiritual successor, Endstone."
+    },
+    {
+      question: "What is Endstone?",
+      answer: "Endstone is the official spiritual successor to Nukkit, created and maintained by the same author. It provides a high-level plugin API for the Bedrock Dedicated Server (BDS), with first-class support for Python and C++ plugins and full feature parity with vanilla Minecraft. Endstone delivers the same terrain generation, world biomes, AI behavior, and command functionality as the official server, and its API is designed to feel familiar to Nukkit plugin authors."
+    },
+    {
+      question: "What about Cloudburst/Nukkit?",
+      answer: "Cloudburst/Nukkit is the community-maintained fork that picked up where Nukkit left off. While the CloudburstMC team keeps the codebase alive under GPL 3.0, they focus on maintenance rather than adding new features or driving major improvements. As a result, Cloudburst/Nukkit still lacks some vanilla Bedrock features (such as terrain generation and mob AI) and often trails behind in adopting updates. Neither the original Nukkit creator nor the Endstone project is affiliated with, or responsible for Cloudburst/Nukkit."
+    },
+    {
+      question: "Which should I choose: Endstone or Cloudburst/Nukkit?",
+      answer: "For the fastest access to new Bedrock features, the most accurate vanilla behavior, and official backing from the original author, we strongly recommend Endstone. If you prefer a pure-Java solution with a long-lasting plugin ecosystem and don't mind that some vanilla features are missing, Cloudburst/Nukkit remains an option."
+    }
+  ];
+
+
   return (
     <div>
       <section>
@@ -175,6 +207,25 @@ class MyPlugin(Plugin):
               highlightColor="rgba(101, 117, 133, 0.16)"
             />
           </div>
+        </div>
+      </section>
+      <section id="faq" className="pt-4">
+        <div className="flex flex-col w-full max-w-full gap-4 py-1 px-7 md:px-10 md:mx-auto">
+          <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
+            Frequently Asked Question
+          </h2>
+          <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
+            {faqs.map((faq, index) => (
+              <AccordionItem value={`item-${index}`} key={faq.question}>
+                <AccordionTrigger className="text-lg font-semibold text-left">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground text-base">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
     </div>
