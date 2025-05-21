@@ -1,4 +1,4 @@
-import {ChevronRight} from "lucide-react";
+import {ChevronRight, Github, GithubIcon} from "lucide-react";
 import {buttonVariants} from "@/components/ui/button";
 import Link from "next/link";
 import {cn} from "@/lib/utils";
@@ -45,31 +45,36 @@ public class MyPlugin extends PluginBase {
         }
         return true;
     }
-    
+
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = false)
     public void onServerCommand(ServerCommandEvent event) {
         this.getLogger().info("ServerCommandEvent is called!");
     }
 }`;
 
-  const afterCode = `from endstone import ColorFormat
+  const afterCode = `from typing import override
+
 from endstone.command import Command, CommandSender
-from endstone.event import EventPriority, ServerCommandEvent, event_handler
+from endstone.event import event_handler, EventPriority, ServerCommandEvent
 from endstone.plugin import Plugin
+from endstone import ColorFormat
 
 
 class MyPlugin(Plugin):
-
+    @override
     def on_load(self) -> None:
         self.logger.info(ColorFormat.GREEN + "on_load is called!")
 
+    @override
     def on_enable(self) -> None:
         self.logger.info(ColorFormat.DARK_GREEN + "on_enable is called!")
         self.register_events(self)
-
+    
+    @override
     def on_disable(self) -> None:
         self.logger.info(ColorFormat.DARK_RED + "on_disable is called!")
-
+    
+    @override
     def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         match command.name:
             case "example":
@@ -78,18 +83,17 @@ class MyPlugin(Plugin):
 
         return True
 
-    @event_handler(priority=EventPriority.NORMAL, ignore_cancelled = False)
+    @event_handler(priority=EventPriority.NORMAL, ignore_cancelled=False)
     def on_server_command(self, event: ServerCommandEvent):
         self.logger.info("ServerCommandEvent is called!")
 
-};`;
+`;
   return (
     <div>
       <section>
         <div className="relative h-full overflow-hidden py-5 md:py-14">
           <AnimatedGridPattern maxOpacity={0.1}
                                duration={3}
-                               repeatDelay={1}
                                className={cn(
                                  "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
                                  "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
@@ -120,7 +124,8 @@ class MyPlugin(Plugin):
                       "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
                     )}
                   >
-                    The <AnimatedGradientText className="font-semibold tracking-tight">next generation</AnimatedGradientText> of
+                    The <AnimatedGradientText className="font-semibold tracking-tight">next
+                    generation</AnimatedGradientText> of
                     Nukkit is here.
                   </h1>
                 </div>
@@ -133,13 +138,12 @@ class MyPlugin(Plugin):
                 </p>
 
                 <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
-                  <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4 md:justify-center
-              ">
-                    <RainbowButton className="
-                rounded-xl h-11 px-8" asChild>
-                      <Link href="https://github.com/EndstoneMC/endstone">Visit Endstone on Github
+                  <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4 md:justify-center">
+                    <RainbowButton className="rounded-xl h-11 px-8 gap-1" asChild>
+                      <Link href="https://github.com/EndstoneMC/endstone">
+                        Visit Endstone on GitHub
                         <ChevronRight
-                          className="ml-1  size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1"/>
+                          className="size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1"/>
                       </Link>
                     </RainbowButton>
                   </div>
@@ -166,8 +170,8 @@ class MyPlugin(Plugin):
               afterLanguage="python"
               beforeFilename="Plugin.java"
               afterFilename="plugin.py"
-              lightTheme="github-light"
-              darkTheme="github-dark"
+              beforeDescription="Nukkit"
+              afterDescription="Endstone"
               highlightColor="rgba(101, 117, 133, 0.16)"
             />
           </div>
