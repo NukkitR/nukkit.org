@@ -186,7 +186,7 @@ class MyPlugin(Plugin):
         </div>
       </section>
       <section id="showcase" className="py-14">
-        <div className="flex flex-col w-full max-w-full gap-4 py-1 px-7 md:px-10 md:mx-auto">
+        <div className="flex flex-col w-full max-w-5xl gap-4 py-1 px-7 md:px-10 md:mx-auto">
           <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
             Nukkit ➡️ Endstone
           </h2>
@@ -209,8 +209,8 @@ class MyPlugin(Plugin):
           </div>
         </div>
       </section>
-      <section id="faq" className="pt-4">
-        <div className="flex flex-col w-full max-w-full gap-4 py-1 px-7 md:px-10 md:mx-auto">
+      <section id="faq" className="py-4">
+        <div className="flex flex-col w-full max-w-3xl gap-4 py-1 px-7 md:px-10 md:mx-auto">
           <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
             Frequently Asked Question
           </h2>
@@ -226,6 +226,14 @@ class MyPlugin(Plugin):
               </AccordionItem>
             ))}
           </Accordion>
+        </div>
+      </section>
+      <section className="py-8">
+        <div
+          className="flex flex-col w-full max-w-3xl gap-4 py-1 px-7 md:px-10 md:mx-auto">
+          <span className="text-muted-foreground text-sm">
+              &copy; 2025 Nukkit. All rights reserved.
+          </span>
         </div>
       </section>
     </div>
