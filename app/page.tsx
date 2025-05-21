@@ -93,7 +93,6 @@ class MyPlugin(Plugin):
     @event_handler(priority=EventPriority.NORMAL, ignore_cancelled=False)
     def on_server_command(self, event: ServerCommandEvent):
         self.logger.info("ServerCommandEvent is called!")
-
 `;
 
   const faqs = [
@@ -103,11 +102,11 @@ class MyPlugin(Plugin):
     },
     {
       question: "Is Nukkit still maintained?",
-      answer: "No. The original Nukkit project has reached end-of-life, and all ongoing work by the creator has moved to its spiritual successor, Endstone."
+      answer: "No. The original Nukkit project has reached end-of-life, and all ongoing work by the creator has moved to its successor, Endstone."
     },
     {
       question: "What is Endstone?",
-      answer: "Endstone is the official spiritual successor to Nukkit, created and maintained by the same author. It provides a high-level plugin API for the Bedrock Dedicated Server (BDS), with first-class support for Python and C++ plugins and full feature parity with vanilla Minecraft. Endstone delivers the same terrain generation, world biomes, AI behavior, and command functionality as the official server, and its API is designed to feel familiar to Nukkit plugin authors."
+      answer: "Endstone is the official successor to Nukkit, created and maintained by the same author. It provides a high-level plugin API for the Bedrock Dedicated Server (BDS), with first-class support for Python and C++ plugins and full feature parity with vanilla Minecraft. Endstone delivers the same terrain generation, world biomes, AI behavior, and command functionality as the official server, and its API is designed to feel familiar to Nukkit plugin authors."
     },
     {
       question: "What about Cloudburst/Nukkit?",
@@ -166,14 +165,21 @@ class MyPlugin(Plugin):
                   className="max-w-xl text-balance text-left text-base tracking-tight text-black dark:font-medium dark:text-white md:text-center md:text-lg ">
                   The legacy Nukkit project has evolved.
                   <br/>
-                  Welcome to <b>Endstone</b>, the official spiritual successor to Nukkit.
+                  Welcome to <b>Endstone</b>, the official successor to Nukkit.
                 </p>
 
                 <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
                   <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4 md:justify-center">
                     <RainbowButton className="rounded-xl h-11 px-8 gap-1" asChild>
                       <Link href="https://github.com/EndstoneMC/endstone">
-                        Visit Endstone on GitHub
+                        View Endstone on GitHub
+                        <ChevronRight
+                          className="size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1"/>
+                      </Link>
+                    </RainbowButton>
+                    <RainbowButton className="rounded-xl h-11 px-8 gap-1" variant="outline" asChild>
+                      <Link href="https://github.com/Nukkit/Nukkit">
+                        View Nukkit (Legacy) on GitHub
                         <ChevronRight
                           className="size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1"/>
                       </Link>
@@ -186,7 +192,7 @@ class MyPlugin(Plugin):
         </div>
       </section>
       <section id="showcase" className="py-14">
-        <div className="flex flex-col w-full max-w-5xl gap-4 py-1 px-7 md:px-10 md:mx-auto">
+        <div className="flex flex-col w-full max-w-full gap-4 py-1 px-7 md:px-10 md:mx-auto">
           <h2 className="mb-2 text-center text-5xl font-bold leading-[1.2] tracking-tighter text-foreground">
             Nukkit ➡️ Endstone
           </h2>
